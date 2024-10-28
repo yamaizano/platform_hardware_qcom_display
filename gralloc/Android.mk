@@ -13,16 +13,14 @@ LOCAL_CFLAGS                  := $(common_flags) -DLOG_TAG=\"qdgralloc\" -Wall -
 LOCAL_SHARED_LIBRARIES        := $(common_libs) libqdMetaData libsync libgrallocutils \
                                  android.hardware.graphics.common@1.1
 ifeq ($(TARGET_KERNEL_VERSION),$(filter $(TARGET_KERNEL_VERSION),4.14 4.19))
-LOCAL_C_INCLUDES              += external/libcxx/include \
-                                 system/core/libion/include/ \
+LOCAL_C_INCLUDES              += system/core/libion/include/ \
                                  system/core/libion/kernel-headers/ \
                                  $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_SHARED_LIBRARIES        += libion
 LOCAL_CFLAGS                  += -std=c++14
 endif
 ifeq ($(TARGET_KERNEL_VERSION), 4.19)
-LOCAL_C_INCLUDES              += external/libcxx/include \
-                                 $(LIBION_HEADER_PATHS) \
+LOCAL_C_INCLUDES              += $(LIBION_HEADER_PATHS) \
                                  $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_SHARED_LIBRARIES        += libion
 endif
